@@ -110,6 +110,4 @@ int main() {
         addMoveToBoard('^', movePlayer2());
         checkForWin('^');
     } while (1);
-
-    return 0;
 }
