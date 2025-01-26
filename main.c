@@ -7,7 +7,7 @@ char *board[6][7];
 void initializeBoard() {
     for (int row = 0; row < 6; row++) {
         for (int col = 0; col < 7; col++) {
-            board[row][col] = NULL; // Begin met een leeg bord
+            board[row][col] = NULL;
         }
     }
 }
@@ -27,13 +27,12 @@ int movePlayer2() {
 }
 
 void addMoveToBoard(char playerChar, int column) {
-    // Dynamisch geheugen toewijzen voor het speler-symbool
     char *playerSymbol = malloc(sizeof(char));
     *playerSymbol = playerChar;
 
     for (int row = 5; row >= 0; row--) {
         if (board[row][column] == NULL) {
-            board[row][column] = playerSymbol; // Zet de pointer naar het speler-symbool
+            board[row][column] = playerSymbol;
             break;
         }
     }
@@ -65,7 +64,7 @@ void checkForWin(char symbol) {
 
                 // Verwijder de rij die gewonnen heeft en geef het geheugen vrij
                 for (int i = 0; i < 4; i++) {
-                    free(board[row][col + i]); // Vrijgeven van dynamisch geheugen
+                    free(board[row][col + i]);
                     board[row][col + i] = NULL;
                 }
 
@@ -89,9 +88,9 @@ void checkForWin(char symbol) {
                 board[row + 2][col] != NULL && *board[row + 2][col] == symbol &&
                 board[row + 3][col] != NULL && *board[row + 3][col] == symbol) {
 
-                // Verwijder de kolom die gewonnen heeft en geef het geheugen vrij
+
                 for (int i = 0; i < 4; i++) {
-                    free(board[row + i][col]); // Vrijgeven van dynamisch geheugen
+                    free(board[row + i][col]);
                     board[row + i][col] = NULL;
                 }
                 return;
